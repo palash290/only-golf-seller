@@ -1,0 +1,66 @@
+<div class="ct_px_30 ct_mt_30 pb-4">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="d-flex align-items-center gap-3 justify-content-between">
+                    <h4 class="d-flex align-items-center gap-2 ct_fw_600 ct_ff_Rajdhani">
+                        <a routerLink="/home/support" class="ct_black_text"><i
+                                class="fa-solid fa-angle-left"></i></a>Raise Ticket
+                    </h4>
+                </div>
+                <form action="" class="mt-4">
+                    <div class="form-group mb-4">
+                        <label for="product_name" class="mb-2 ct_fw_600 ct_fs_18">Full Name</label>
+                        <input type="text" class="form-control ct_input " id="product_name"
+                            placeholder="Enter your full name" />
+                    </div>
+                    <div class="form-group mb-4">
+                        <label for="product_name" class="mb-2 ct_fw_600 ct_fs_18">Email Address</label>
+                        <input type="email" class="form-control ct_input " id="product_name"
+                            placeholder="Enter email address" />
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <label for="product_name" class="mb-2 ct_fw_600 ct_fs_18">Description</label>
+                        <textarea type="text" class="form-control ct_input  h-auto" rows="4"
+                            placeholder="Provide detailed information about your issue."></textarea>
+                    </div>
+
+
+
+                    <div class="d-flex align-items-center gap-3">
+                        <button type="submit" class="ct_dark_green_btn ct_border_radius_5 ct_fw_600">
+                            Add Ticket
+                        </button>
+                        <a href="support.html" class="ct_outline_btn ct_border_radius_5  ct_fw_600">
+                            Cancel
+                        </a>
+
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Image preview Modal S -->
+<div class="modal fade modal-md" id="full_view_img" tabindex="-1" aria-labelledby="full_view_imgLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-0 pb-0">
+                <h5 class="modal-title ct_fs_24 ct_ff_QuattrocentoSans ct_fw_700 mb-0" id="full_view_imgLabel">
+                    Image Preview
+                </h5>
+                <button type="button" class="btn-close ct_custom_close_img" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="ct_full_view_img">
+                    <img src="img/user.jpg" alt="" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+<section class="ct_login_grid_2 align-items-center">
+      <div class="ct_login_left_form">
+            <div class="w-100 ct_login_inner_left_form">
+                  <h4 class="ct_fs_24 ct_fw_600 ct_ff_Rajdhani text-white ct_mb_30 text-center">Log In as Seller</h4>
+                  <form [formGroup]="Form" (ngSubmit)="onSubmit()">
+                        <div class="form-group mb-4">
+                              <label for="" class="mb-2  text-white">Email Address</label>
+                              <div class="position-relative">
+                                    <input type="email"
+                                          class="form-control ct_input ct_login_input ct_input_ps_50  ct_input_pe_40"
+                                          placeholder="Enter email address" formControlName="email">
+                                    <img src="img/mail_icon.svg" alt="" class="ct_input_left">
+                              </div>
+                              <span class="ct_text_red mt-2">{{validationErrorService.getErrorMessage('Email',
+                                    Form.get('email'))}}</span>
+                        </div>
+                        <div class="form-group mb-2">
+                              <label for="" class="mb-2 text-white">Password</label>
+                              <div class="position-relative">
+                                    <input type="password"
+                                          class="form-control ct_input ct_login_input ct_input_ps_50  ct_input_pe_40"
+                                          placeholder="Enter password" formControlName="password">
+                                    <img src="img/circum_lock.svg" alt="" class="ct_input_left">
+                                    <i class="fa-regular fa-eye-slash ct_show_eye text-white ct_text_op_05"></i>
+                              </div>
+                              <span class="ct_text_red mt-2">{{validationErrorService.getErrorMessage('Password',
+                                    Form.get('password'))}}</span>
+                        </div>
+
+                        <div class="text-end">
+                              <a routerLink="/forgot-password" class="ct_forgot_link">Forgot password?</a>
+                        </div>
+
+
+                        <div class="ct_mt_30">
+                              <!-- <button class="ct_dark_green_btn w-100">Log In</button> -->
+                              <app-submit-button [isLoading]="isLoading" [text]="'Log In'"
+                                    [class]="'ct_dark_green_btn w-100'"></app-submit-button>
+                        </div>
+                  </form>
+            </div>
+      </div>
+
+      <div class="ct_login_right_content">
+            <h1 class="ct_fs_60 text-white ct_ff_lato">Welcome to <br> <span class="ct_text_0bbe96 ct_ff_Rajdhani">ONLY
+                        GOLF</span></h1>
+            <p class="mb-0 text-white ct_ff_lato">Control your golf universe.</p>
+      </div>
+
+</section>

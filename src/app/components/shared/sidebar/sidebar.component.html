@@ -1,0 +1,65 @@
+<div class="ct_side_bar">
+      <div class="ct_close_sidebar">
+            <i class="fa-solid fa-xmark"></i>
+      </div>
+      <div class="ct_admin_logo">
+            <img src="img/logo.svg" alt="" />
+      </div>
+      <ul>
+            <li>
+                  <a routerLink="/home/dashboard" [ngClass]="{ 'active': isActive('/home/dashboard')}">
+                        <img src="img/dashboard_icon.svg" alt="" />
+                        Dashboard
+                  </a>
+            </li>
+            <li>
+                  <a routerLink="/home/manage-products" [ngClass]="{ 'active': isActive('/home/manage-products')}">
+                        <img src="img/Manage_Products_icon.svg" alt="" />
+                        Manage Products
+                  </a>
+            </li>
+            <li>
+                  <a routerLink="/home/order-list" [ngClass]="{ 'active': isActive('/home/order-list')}">
+                        <img src="img/View_Orders_icon.svg" alt="" />
+                        View Orders
+                  </a>
+            </li>
+            <li>
+                  <a routerLink="/home/customer-connect" [ngClass]="{ 'active': isActive('/home/customer-connect')}">
+                        <img src="img/Customer_Connect_icon.svg" alt="" />
+                        Customer Connect
+                  </a>
+            </li>
+            <li>
+                  <a routerLink="/home/ratings-reviews" [ngClass]="{ 'active': isActive('/home/ratings-reviews')}">
+                        <img src="img/Ratings_ Reviews_icons.svg" alt="" />
+                        Ratings & Reviews
+                  </a>
+            </li>
+            <li>
+                  <a routerLink="/home/earnings-payouts" [ngClass]="{ 'active': isActive('/home/earnings-payouts')}">
+                        <img src="img/Earnings_&_Payouts_icon.svg" alt="" />
+                        Earnings & Payouts
+                  </a>
+            </li>
+            <li>
+                  <a routerLink="/home/sales-analytics" [ngClass]="{ 'active': isActive('/home/sales-analytics')}">
+                        <img src="img/Sales_Analytics_icon.svg" alt="" />
+                        Sales Analytics
+                  </a>
+            </li>
+            <li>
+                  <a routerLink="/home/support" [ngClass]="{ 'active': isActive('/home/support')}">
+                        <img src="img/Support_icon.svg" alt="" />
+                        Support
+                  </a>
+            </li>
+            <li>
+                  <a routerLink="/home/shop-customization" [ngClass]="{ 'active': isActive('/home/shop-customization')}">
+                        <img src="img/Shop_Customization_icon.svg" alt="" />
+                        Shop Customization
+                  </a>
+            </li>
+
+      </ul>
+</div>
