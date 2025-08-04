@@ -14,6 +14,12 @@ export const routes: Routes = [
             title: 'Forgot Password',
       },
       {
+            path: 'reset-password',
+            loadComponent: () => import('./components/reset-password/reset-password.component').then(m => m.ResetPasswordComponent),
+            pathMatch: 'full',
+            title: 'Forgot Password',
+      },
+      {
             path: 'home',
             loadComponent: () => import('./components/main/main.component').then(m => m.MainComponent),
             // canActivate: [authGuard]
