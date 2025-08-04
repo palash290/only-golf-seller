@@ -3,9 +3,10 @@ import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
+
       constructor(private router: Router) { }
 
-      setValues(token: string, roleUUID: string,userInfo: any) {
+      setValues(token: string, roleUUID: string, userInfo: any) {
             localStorage.setItem('token', token)
             localStorage.setItem('role_uuid', roleUUID);
             localStorage.setItem('userInfo', JSON.stringify(userInfo));
@@ -27,9 +28,12 @@ export class AuthService {
             localStorage.removeItem('role_uuid');
             localStorage.removeItem('token');
             localStorage.removeItem('userInfo');
+            this.router.navigateByUrl('/')
       };
 
       getRoleUUID(): string | null {
             return localStorage.getItem('role_uuid');
       }
+
+      
 }

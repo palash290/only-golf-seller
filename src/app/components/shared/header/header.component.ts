@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '../../../services/auth.service';
+import { CommonService } from '../../../services/common.service';
 
 @Component({
   selector: 'app-header',
@@ -9,5 +11,30 @@ import { RouterLink } from '@angular/router';
 })
 export class HeaderComponent {
 
-  logout() { }
+  @ViewChild('closeModal') closeModal!: ElementRef;
+  name: any;
+  businessLogoUrl: string = '';
+
+  constructor(private service: AuthService, private commonService: CommonService) { 
+    this.getDetails();
+  }
+
+  logout() {
+    this.service.logout()
+    this.closeModal.nativeElement.click();
+  }
+
+  getDetails() {
+    this.commonService.get('seller/seller-profile').subscribe({
+      next: (resp: any) => {
+        this.name = resp.data.full_name,
+        this.businessLogoUrl = resp.data.profile_image;
+      },
+      error: (error) => {
+        //this.toastr.warning(error.error?.message || 'Something went wrong!');
+      }
+    });
+  }
+
+
 }

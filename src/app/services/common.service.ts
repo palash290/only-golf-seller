@@ -8,6 +8,7 @@ import { environment } from '../../environments/environment';
 })
 
 export class CommonService {
+  
   baseUrl = environment.apiUrl
 
   constructor(private http: HttpClient, private router: Router) { }
@@ -27,4 +28,9 @@ export class CommonService {
   delete<T>(url: string): Observable<T> {
     return this.http.delete<T>(this.baseUrl + url);
   };
+
+  setToken(token: string) {
+    localStorage.setItem('token', token)
+  }
+
 }

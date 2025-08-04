@@ -4,182 +4,243 @@
             <div class="col-md-12">
                 <h4 class="ct_fs_28  ct_fw_600 ct_ff_Rajdhani mb-2">Settings</h4>
                 <div>
-                    <form class="mt-5">
-                        <div class=" mb-5 text-center">
+                    <form [formGroup]="Form">
+                        <div class="mb-5 text-center">
                             <div class="ct_upload_user_profile_img mx-auto">
-                                <img src="img/_brand_logo.png" alt="" class="ct_img_w_148" />
+                                <img [src]="businessLogoUrl ? businessLogoUrl : 'img/_brand_logo.png'" alt=""
+                                    class="ct_img_w_148" />
                                 <label for="ct_upload_user_profile2" class="position-relative d-block">
-                                    <input type="file" class="d-none" id="ct_upload_user_profile2" />
+                                    <input type="file" class="d-none" id="ct_upload_user_profile2"
+                                        (change)="onLogoChange($event)" accept="image/*" />
+
                                     <div class="ct_authore_banner_upload_icon_12">
                                         <i class="fa-solid fa-pencil"></i>
                                     </div>
                                 </label>
                             </div>
                             <div class="mt-3">
-                                <h4 class="ct_fs_18  mb-1 ct_tex_6B7280">Update Business Logo</h4>
-                                <p class="mb-0 ct_tex_6B7280 ct_fs_14">
-                                    Alicejhonson2025gmail.com
-                                </p>
+                                <h4 class="ct_fs_18 mb-1 ct_tex_6B7280">Update Business Logo</h4>
+                                <p class="mb-0 ct_tex_6B7280 ct_fs_14">{{ Form.get('email')?.value }}</p>
                             </div>
                         </div>
+
+                        <!-- Personal Details -->
                         <div>
                             <h4 class="ct_fs_20 ct_dark_green_clr mb-3 ct_fw_600">Personal Details</h4>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group mb-4">
-                                        <label for="" class="ct_fw_600 mb-2">Full Name</label>
+                                        <label class="ct_fw_600 mb-2">Full Name</label>
                                         <input type="text" class="form-control ct_input" placeholder="Full name"
-                                            value="Cameron Williamson"/>
+                                            formControlName="name" />
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group mb-4">
-                                        <label for="" class="ct_fw_600 mb-2">Phone Number</label>
+                                        <label class="ct_fw_600 mb-2">Phone Number</label>
                                         <input type="number" class="form-control ct_input" placeholder="Phone number"
-                                            value="(208) 555-0112"/>
+                                            formControlName="phone" />
+                                        <span class="ct_text_red mt-2">{{validationErrorService.getErrorMessage('Phone
+                                            number',
+                                            Form.get('phone'))}}</span>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group mb-4">
-                                        <label for="" class="ct_fw_600 mb-2">Email Address</label>
-                                        <input type="email" class="form-control ct_input " placeholder="Email address"
-                                            value="alice@gmail.com"/>
+                                        <label class="ct_fw_600 mb-2">Email Address</label>
+                                        <input type="email" class="form-control ct_input" placeholder="Email address"
+                                            formControlName="email" />
                                     </div>
                                 </div>
-                                <div class="col-md-12">
-                                    <div class="form-group mb-4">
-                                        <label for="" class="ct_fw_600 mb-2">House No. , Building Name</label>
-                                        <input type="text" class="form-control ct_input "
-                                            placeholder="House no. , building name"
-                                            value="House No. 845, Oakridge Plaza, Apt 12B"/>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group mb-4">
-                                        <label for="" class="ct_fw_600 mb-2">Landmark</label>
-                                        <input type="text" class="form-control ct_input " placeholder="Landmark"
-                                            value="Near Jefferson Golf Club"/>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group mb-4">
-                                        <label for="" class="ct_fw_600 mb-2">State</label>
-                                        <select type="text" class="form-control ct_input">
-                                            <option value="">State</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group mb-4">
-                                        <label for="" class="ct_fw_600 mb-2">City</label>
-                                        <select type="text" class="form-control ct_input">
-                                            <option value="">City</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group mb-4">
-                                        <label for="" class="ct_fw_600 mb-2">Pincode</label>
-                                        <input type="number" class="form-control ct_input " placeholder="Pincode"
-                                            value="85260"/>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group mb-4">
-                                        <label for="" class="ct_fw_600 mb-2">Current Location</label>
-                                        <div
-                                            class="form-control ct_input d-flex justify-content-center align-items-center">
-                                            <p class="mb-0"><i class="fa-solid fa-location-crosshairs me-2"></i>Current
-                                                Location</p>
-                                        </div>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
+
+                        <!-- Business Details -->
                         <div class="mt-4">
                             <h4 class="ct_fs_20 ct_dark_green_clr mb-3 ct_fw_600">Business Details</h4>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group mb-4">
-                                        <label for="" class="ct_fw_600 mb-2">Business Name</label>
+                                        <label class="ct_fw_600 mb-2">Business Name</label>
                                         <input type="text" class="form-control ct_input" placeholder="Business name"
-                                            value="GreenLine Golf Supply LLC"/>
+                                            formControlName="businessName" />
+                                        <span
+                                            class="ct_text_red mt-2">{{validationErrorService.getErrorMessage('Business
+                                            name',
+                                            Form.get('businessName'))}}</span>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group mb-4">
-                                        <label for="" class="ct_fw_600 mb-2">Business EIN</label>
-                                        <input type="number" class="form-control ct_input" placeholder="Business EIN"
-                                            value="88-7654321"/>
+                                        <label class="ct_fw_600 mb-2">Business EIN</label>
+                                        <input type="text" class="form-control ct_input" placeholder="Business EIN"
+                                            formControlName="businessEIN" />
+                                        <span
+                                            class="ct_text_red mt-2">{{validationErrorService.getErrorMessage('Business
+                                            EIN',
+                                            Form.get('businessEIN'))}}</span>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group mb-4">
+                                        <label class="ct_fw_600 mb-2">House No. , Building Name</label>
+                                        <input type="text" class="form-control ct_input"
+                                            placeholder="House no. , building name" formControlName="houseNo" />
+                                        <span class="ct_text_red mt-2">{{validationErrorService.getErrorMessage('House
+                                            No',
+                                            Form.get('houseNo'))}}</span>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group mb-4">
-                                        <label for="" class="ct_fw_600 mb-2">Business Description</label>
-                                        <textarea type="email" class="form-control ct_input h-auto" rows="4"
-                                            placeholder="Business description">GreenLine Golf Supply is a U.S.-based golf equipment retailer specializing in premium indoor and outdoor gear. From pro-level clubs to beginner training kits, we help golfers of all levels find the perfect gear to up their game.</textarea>
+                                        <label class="ct_fw_600 mb-2">Landmark</label>
+                                        <input type="text" class="form-control ct_input" placeholder="Landmark"
+                                            formControlName="landmark" />
+                                        <span
+                                            class="ct_text_red mt-2">{{validationErrorService.getErrorMessage('Landmark',
+                                            Form.get('landmark'))}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group mb-4">
+                                        <label class="ct_fw_600 mb-2">State</label>
+                                        <!-- <select class="form-control ct_input" formControlName="state">
+                                            <option value="">State</option>
+                                            <option *ngFor="let s of states" [value]="s">{{ s }}</option>
+                                        </select> -->
+                                        <input type="text" class="form-control ct_input" placeholder="State"
+                                            formControlName="state" />
+                                        <span class="ct_text_red mt-2">{{validationErrorService.getErrorMessage('State',
+                                            Form.get('state'))}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group mb-4">
+                                        <label class="ct_fw_600 mb-2">City</label>
+                                        <!-- <select class="form-control ct_input" formControlName="city">
+                                            <option value="">City</option>
+                                            <option *ngFor="let c of cities" [value]="c">{{ c }}</option>
+                                        </select> -->
+                                        <input type="text" class="form-control ct_input" placeholder="City"
+                                            formControlName="city" />
+                                        <span class="ct_text_red mt-2">{{validationErrorService.getErrorMessage('City',
+                                            Form.get('city'))}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group mb-4">
+                                        <label class="ct_fw_600 mb-2">Pincode</label>
+                                        <input type="number" class="form-control ct_input" placeholder="Pincode"
+                                            formControlName="pinCode" />
+                                        <span class="ct_text_red mt-2">{{validationErrorService.getErrorMessage('Pin
+                                            code',
+                                            Form.get('pinCode'))}}</span>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-6">
+                                    <div class="form-group mb-4">
+                                        <label class="ct_fw_600 mb-2">Current Location</label>
+                                        <input type="text" class="form-control ct_input" placeholder="Current Location"
+                                            formControlName="location" />
+                                    </div>
+                                </div> -->
+
+                                <div class="col-md-12">
+                                    <div class="form-group mb-4">
+                                        <label class="ct_fw_600 mb-2">Business Description</label>
+                                        <textarea class="form-control ct_input h-auto" rows="4"
+                                            placeholder="Business description"
+                                            formControlName="businessDescription"></textarea>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Bank Details -->
                         <div class="mt-4">
                             <h4 class="ct_fs_20 ct_dark_green_clr mb-3 ct_fw_600">Bank Details</h4>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group mb-4">
-                                        <label for="" class="ct_fw_600 mb-2">Account Holder</label>
+                                        <label class="ct_fw_600 mb-2">Account Holder</label>
                                         <input type="text" class="form-control ct_input" placeholder="Account holder"
-                                            value="John Smith"/>
+                                            formControlName="bankHolderName" />
+                                        <span class="ct_text_red mt-2">{{validationErrorService.getErrorMessage('Account
+                                            holder',
+                                            Form.get('bankHolderName'))}}</span>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group mb-4">
-                                        <label for="" class="ct_fw_600 mb-2">Bank Name</label>
+                                        <label class="ct_fw_600 mb-2">Bank Name</label>
                                         <input type="text" class="form-control ct_input" placeholder="Bank name"
-                                            value="Chase Bank"/>
+                                            formControlName="bankName" />
+                                        <span class="ct_text_red mt-2">{{validationErrorService.getErrorMessage('Bank
+                                            name',
+                                            Form.get('bankName'))}}</span>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group mb-4">
-                                        <label for="" class="ct_fw_600 mb-2">Account Number</label>
-                                        <input type="number" class="form-control ct_input" placeholder="Account number"
-                                            value="123456789"/>
+                                        <label class="ct_fw_600 mb-2">Account Number</label>
+                                        <input type="text" class="form-control ct_input" placeholder="Account number"
+                                            formControlName="accountNumber" />
+                                        <span class="ct_text_red mt-2">{{validationErrorService.getErrorMessage('Account
+                                            number',
+                                            Form.get('accountNumber'))}}</span>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group mb-4">
-                                        <label for="" class="ct_fw_600 mb-2">Routing Number</label>
-                                        <input type="number" class="form-control ct_input" placeholder="Routing number"
-                                            value="9858785488"/>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group mb-4">
-                                        <label for="" class="ct_fw_600 mb-2">Swift Code</label>
-                                        <input type="text" class="form-control ct_input" placeholder="Swift code"
-                                            value="CHASU33"/>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group mb-4">
-                                        <label for="" class="ct_fw_600 mb-2">IBAN</label>
+                                        <label class="ct_fw_600 mb-2">Routing Number</label>
                                         <input type="text" class="form-control ct_input" placeholder="Routing number"
-                                            value="US1234567895"/>
+                                            formControlName="routingNumber" />
+                                        <span class="ct_text_red mt-2">{{validationErrorService.getErrorMessage('Routing
+                                            number',
+                                            Form.get('routingNumber'))}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group mb-4">
+                                        <label class="ct_fw_600 mb-2">Swift Code</label>
+                                        <input type="text" class="form-control ct_input" placeholder="Swift code"
+                                            formControlName="swiftCode" />
+                                        <span class="ct_text_red mt-2">{{validationErrorService.getErrorMessage('Swift
+                                            code',
+                                            Form.get('swiftCode'))}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group mb-4">
+                                        <label class="ct_fw_600 mb-2">IBAN</label>
+                                        <input type="text" class="form-control ct_input" placeholder="IBAN"
+                                            formControlName="iban" />
+                                        <span class="ct_text_red mt-2">{{validationErrorService.getErrorMessage('IBAN',
+                                            Form.get('iban'))}}</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                         <div class="d-flex align-items-center gap-3 mt-5">
-                            <button class="ct_dark_green_btn ct_border_radius_5 ct_fw_600">
+                            <button type="submit" class="ct_dark_green_btn ct_border_radius_5 ct_fw_600"
+                                [disabled]="Form.invalid" (click)="submitDetails()">
                                 Save Changes
                             </button>
-                            <a href="edit-profile.html" class="ct_outline_btn ct_border_radius_5  ct_fw_600">
+                            <a routerLink="/dashboard" class="ct_outline_btn ct_border_radius_5 ct_fw_600">
                                 Cancel
                             </a>
                         </div>
                     </form>
+
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+<div class="ct_loader_main" *ngIf="isLoading">
+    <img src="/img/loader.gif" alt="">
 </div>

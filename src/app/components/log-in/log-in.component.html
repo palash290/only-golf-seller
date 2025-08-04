@@ -17,11 +17,14 @@
                         <div class="form-group mb-2">
                               <label for="" class="mb-2 text-white">Password</label>
                               <div class="position-relative">
-                                    <input type="password"
+                                    <input type="{{ isPasswordVisible ? 'text' : 'password' }}"
                                           class="form-control ct_input ct_login_input ct_input_ps_50  ct_input_pe_40"
                                           placeholder="Enter password" formControlName="password">
                                     <img src="img/circum_lock.svg" alt="" class="ct_input_left">
-                                    <i class="fa-regular fa-eye-slash ct_show_eye text-white ct_text_op_05"></i>
+                                    <!-- <i class="fa-regular fa-eye-slash ct_show_eye text-white ct_text_op_05"></i> -->
+                                    <i class="fa-regular ct_show_eye text-white ct_text_op_05" style="cursor: pointer;"
+                                          [ngClass]="isPasswordVisible ? 'fa-eye' : 'fa-eye-slash'"
+                                          (click)="togglePasswordVisibility()"></i>
                               </div>
                               <span class="ct_text_red mt-2">{{validationErrorService.getErrorMessage('Password',
                                     Form.get('password'))}}</span>

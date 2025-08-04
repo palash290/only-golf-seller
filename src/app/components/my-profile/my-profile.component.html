@@ -8,22 +8,24 @@
                     <div class="d-flex align-items-center justify-content-between gap-3 ct_flex_col_767">
                         <div class="d-flex align-items-center gap-4">
                             <div class="ct_upload_user_profile_img">
-                                <img src="/img/user.jpg" alt="" />
+                                <img [src]="businessLogoUrl ? businessLogoUrl : 'img/_brand_logo.png'" alt=""
+                                    class="ct_img_w_148" />
                                 <label for="ct_upload_user_profile2" class="position-relative d-block">
                                     <input type="file" class="d-none" id="ct_upload_user_profile2" />
-                                    <div class="ct_authore_banner_upload_icon_12">
+                                    <!-- <div class="ct_authore_banner_upload_icon_12">
                                         <i class="fa-solid fa-pencil"></i>
-                                    </div>
+                                    </div> -->
                                 </label>
                             </div>
                             <div>
-                                <h4 class="ct_fs_18 ct_fw_700 mb-1">Alice Johnson</h4>
+                                <h4 class="ct_fs_18 ct_fw_700 mb-1">{{name}}</h4>
                                 <p class="mb-0 ct_text_op_05 ct_fs_14">
-                                    Alicejhonson2025gmail.com
+                                    {{email}}
                                 </p>
                             </div>
                         </div>
-                        <a routerLink="/home/shop-customization" class="ct_outline_btn ct_border_radius_10 ct_w_100_767">
+                        <a routerLink="/home/shop-customization"
+                            class="ct_outline_btn ct_border_radius_10 ct_w_100_767">
                             <i class="fa-solid fa-pencil me-2"></i> Edit Shop Details
                         </a>
                     </div>
@@ -34,22 +36,23 @@
                                 <div class="form-group mb-4">
                                     <label for="" class="ct_fw_600 mb-2">Full Name</label>
                                     <input type="text" class="form-control ct_input" placeholder="Full name"
-                                        value="Alice " />
+                                        [(ngModel)]="name" disabled [ngModelOptions]="{standalone: true}" />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group mb-4">
                                     <label for="" class="ct_fw_600 mb-2">Email Address</label>
                                     <input type="email" class="form-control ct_input " disabled
-                                        placeholder="Email address" value="alice@gmail.com" />
+                                        placeholder="Email address" [(ngModel)]="email"
+                                        [ngModelOptions]="{standalone: true}" />
                                 </div>
                             </div>
 
                         </div>
 
-                        <div class="mt-4">
+                        <!-- <div class="mt-4">
                             <button type="button" class="ct_dark_green_btn">Save Changes</button>
-                        </div>
+                        </div> -->
                     </form>
                 </div>
             </div>
