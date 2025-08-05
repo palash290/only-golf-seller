@@ -6,10 +6,14 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ValidationErrorService } from '../../services/validation-error.service';
 import { CommonService } from '../../services/common.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { NzFlexDirective } from 'ng-zorro-antd/flex';
+import { NzInputOtpComponent } from 'ng-zorro-antd/input';
 
 @Component({
   selector: 'app-reset-password',
-  imports: [ReactiveFormsModule, CommonModule, RouterLink, SubmitButtonComponent],
+  imports: [ReactiveFormsModule, CommonModule, RouterLink, SubmitButtonComponent,
+    NzFlexDirective, NzInputOtpComponent
+  ],
   templateUrl: './reset-password.component.html',
   styleUrl: './reset-password.component.css'
 })
@@ -53,7 +57,7 @@ export class ResetPasswordComponent {
       formURlData.set('otp', this.Form.value.otp)
       formURlData.set('newPassword', this.Form.value.password)
       this.service
-        .post('user/reset-password', formURlData.toString())
+        .post('user/reset-password1', formURlData.toString())
         .subscribe({
           next: (resp: any) => {
             if (resp.success == true) {
