@@ -499,6 +499,7 @@ header {
 .ct_close_sidebar {
   display: none;
 }
+
 .ct_custom_table tr td {
   background-color: #fff;
   border-bottom: 1px solid #eaebef;

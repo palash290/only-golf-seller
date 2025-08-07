@@ -78,7 +78,7 @@ export class ShopCustomizationComponent {
       },
       error: (error) => {
         this.isLoading = false;
-        this.toastr.warning(error.error?.message || 'Something went wrong!');
+        this.toastr.warning(error || 'Something went wrong!');
       }
     });
   }
@@ -103,6 +103,19 @@ export class ShopCustomizationComponent {
 
   submitDetails() {
     this.isLoading = true;
+
+    const formValues = this.Form.value;
+    for (const key in formValues) {
+      if (formValues.hasOwnProperty(key)) {
+        const value = formValues[key];
+        if (typeof value === 'string' && value.trim() === '') {
+          this.isLoading = false;
+          //this.toastr.warning(`${key.replace(/([A-Z])/g, ' $1')} cannot be empty or whitespace only`);
+          return;
+        }
+      }
+    }
+
     const formData = new FormData();
 
     formData.append('business_name', this.Form.value.businessName);
@@ -138,7 +151,7 @@ export class ShopCustomizationComponent {
       },
       error: (error) => {
         this.isLoading = false;
-        this.toastr.warning(error.error?.message || 'Something went wrong!');
+        this.toastr.warning(error || 'Something went wrong!');
       }
     });
   }

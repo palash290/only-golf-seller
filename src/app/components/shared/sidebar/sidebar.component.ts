@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 
 @Component({
@@ -16,5 +16,12 @@ export class SidebarComponent {
   isActive(route: string): boolean {
     return this.router.isActive(route, true);
   }
+
+  @Output() toggleEvent = new EventEmitter<boolean>();
+
+  toggleMenu() {
+    this.toggleEvent.emit(false); // Emit event to parent component
+  }
+
 
 }

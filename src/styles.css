@@ -46,3 +46,27 @@
 .err_msg {
       color: red;
 }
+
+.ct_otp_inputs input {
+      width: 40px;
+      height: 40px;
+      border-radius: 5px;
+      border: 1px solid #eee;
+}
+
+.ct_otp_inputs input:focus {
+      border-color: var(--green);
+      box-shadow: unset;
+}
+
+.ct_otp_inputs .ant-otp {
+      justify-content: center;
+      margin-top: 30px;
+}
+
+input:-webkit-autofill {
+      background-color: transparent !important;
+      /* Change this to your desired color */
+      -webkit-box-shadow: 0 0 0 1000px #000 inset !important;
+      -webkit-text-fill-color: #fff !important;
+}

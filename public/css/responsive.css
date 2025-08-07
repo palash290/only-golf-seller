@@ -18,6 +18,7 @@
 
   main.ct_active .ct_side_bar{
     left: 0px;
+    z-index: 999;
 
   }
    main.ct_active .ct_right_panel{

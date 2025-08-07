@@ -24,8 +24,6 @@ export class MyProfileComponent {
   }
 
   getDetails() {
-    // const formURlData = new URLSearchParams();
-    // formURlData.set('amount', amount);
     this.service.get('seller/seller-profile').subscribe({
       next: (resp: any) => {
         this.name = resp.data.full_name,
@@ -33,7 +31,7 @@ export class MyProfileComponent {
           this.businessLogoUrl = resp.data.profile_image;
       },
       error: (error) => {
-        this.toastr.warning(error.error?.message || 'Something went wrong!');
+        this.toastr.warning(error || 'Something went wrong!');
       }
     });
   }

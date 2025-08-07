@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 import { CommonService } from '../../../services/common.service';
@@ -15,7 +15,7 @@ export class HeaderComponent {
   name: any;
   businessLogoUrl: string = '';
 
-  constructor(private service: AuthService, private commonService: CommonService) { 
+  constructor(private service: AuthService, private commonService: CommonService) {
     this.getDetails();
   }
 
@@ -28,12 +28,18 @@ export class HeaderComponent {
     this.commonService.get('seller/seller-profile').subscribe({
       next: (resp: any) => {
         this.name = resp.data.full_name,
-        this.businessLogoUrl = resp.data.profile_image;
+          this.businessLogoUrl = resp.data.profile_image;
       },
       error: (error) => {
-        //this.toastr.warning(error.error?.message || 'Something went wrong!');
+        //this.toastr.warning(error || 'Something went wrong!');
       }
     });
+  }
+
+  @Output() toggleEvent = new EventEmitter<boolean>();
+
+  toggleMenu() {
+    this.toggleEvent.emit(true);
   }
 
 

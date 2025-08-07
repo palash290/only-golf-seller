@@ -11,7 +11,7 @@ import { NzInputOtpComponent } from 'ng-zorro-antd/input';
 
 @Component({
   selector: 'app-reset-password',
-  imports: [ReactiveFormsModule, CommonModule, RouterLink, SubmitButtonComponent,
+  imports: [ReactiveFormsModule, CommonModule, SubmitButtonComponent,
     NzFlexDirective, NzInputOtpComponent
   ],
   templateUrl: './reset-password.component.html',
@@ -82,29 +82,26 @@ export class ResetPasswordComponent {
   }
 
   resendOtp() {
-    this.Form.markAllAsTouched()
-    if (this.Form.valid) {
-      this.isLoadingResend = true
-      const formURlData = new URLSearchParams()
-      formURlData.set('email', this.userEmail)
-      this.service
-        .post('user/resend-otp', formURlData.toString())
-        .subscribe({
-          next: (resp: any) => {
-            if (resp.success == true) {
-              this.isLoadingResend = false;
-              this.toastr.success(resp.message);
-            } else {
-              this.isLoadingResend = false;
-              this.toastr.warning(resp.message);
-            }
-          },
-          error: (error: any) => {
+    this.isLoadingResend = true
+    const formURlData = new URLSearchParams()
+    formURlData.set('email', this.userEmail)
+    this.service
+      .post('user/resend-otp', formURlData.toString())
+      .subscribe({
+        next: (resp: any) => {
+          if (resp.success == true) {
             this.isLoadingResend = false;
-            this.toastr.warning(error || 'Something went wrong!');
+            this.toastr.success(resp.message);
+          } else {
+            this.isLoadingResend = false;
+            this.toastr.warning(resp.message);
           }
-        })
-    }
+        },
+        error: (error: any) => {
+          this.isLoadingResend = false;
+          this.toastr.warning(error || 'Something went wrong!');
+        }
+      })
   }
 
 
