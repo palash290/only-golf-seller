@@ -51,11 +51,7 @@ export class ForgetPasswordComponent {
           },
           error: (error: any) => {
             this.isLoading = false;
-            if (error.error.message) {
-              this.toastr.error(error.error.message);
-            } else {
-              this.toastr.error('Something went wrong!');
-            }
+            this.toastr.warning(error || 'Something went wrong!');
           }
         })
     }

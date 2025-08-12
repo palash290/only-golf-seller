@@ -7,13 +7,13 @@ export class AuthService {
       constructor(private router: Router) { }
 
       setValues(token: string, roleUUID: string, userInfo: any) {
-            localStorage.setItem('token', token)
+            localStorage.setItem('token', token);
             localStorage.setItem('role_uuid', roleUUID);
             localStorage.setItem('userInfo', JSON.stringify(userInfo));
       }
 
       getToken() {
-            return localStorage.getItem('ZynqToken')
+            return localStorage.getItem('token');
       };
 
       getUserInfo() {
@@ -21,14 +21,14 @@ export class AuthService {
       }
 
       isLogedIn() {
-            return this.getToken() !== null
+            return this.getToken() !== null;
       }
 
       logout(): void {
             localStorage.removeItem('role_uuid');
             localStorage.removeItem('token');
             localStorage.removeItem('userInfo');
-            this.router.navigateByUrl('/')
+            this.router.navigateByUrl('/');
       };
 
       getRoleUUID(): string | null {

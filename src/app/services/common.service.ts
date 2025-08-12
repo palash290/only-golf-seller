@@ -18,11 +18,11 @@ export class CommonService {
   };
 
   post<T, U>(url: string, data: U): Observable<T> {
-    return this.http.post<T>(this.baseUrl + url, data)
+    return this.http.post<T>(this.baseUrl + url, data);
   };
 
   update<T, U>(url: string, data: U): Observable<T> {
-    return this.http.post<T>(this.baseUrl + url, data)
+    return this.http.post<T>(this.baseUrl + url, data);
   };
 
   delete<T>(url: string): Observable<T> {
@@ -30,7 +30,7 @@ export class CommonService {
   };
 
   setToken(token: string) {
-    localStorage.setItem('token', token)
+    localStorage.setItem('token', token);
   }
 
 }
