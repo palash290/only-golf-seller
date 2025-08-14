@@ -16,7 +16,9 @@ export class HeaderComponent {
   businessLogoUrl: string = '';
 
   constructor(private service: AuthService, private commonService: CommonService) {
-    this.getDetails();
+    this.commonService.refreshSidebar$.subscribe(() => {
+      this.getDetails();
+    });
   }
 
   logout() {

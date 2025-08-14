@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, signal, } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
 @Injectable({
@@ -8,7 +8,7 @@ import { environment } from '../../environments/environment';
 })
 
 export class CommonService {
-  
+
   baseUrl = environment.apiUrl
 
   constructor(private http: HttpClient, private router: Router) { }
@@ -32,5 +32,13 @@ export class CommonService {
   setToken(token: string) {
     localStorage.setItem('token', token);
   }
+
+  private refreshSidebarSource = new BehaviorSubject<void | null>(null);
+  refreshSidebar$ = this.refreshSidebarSource.asObservable();
+
+  triggerRefresh() {
+    this.refreshSidebarSource.next(null);
+  }
+
 
 }

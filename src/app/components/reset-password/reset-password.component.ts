@@ -12,7 +12,7 @@ import { NzInputOtpComponent } from 'ng-zorro-antd/input';
 @Component({
   selector: 'app-reset-password',
   imports: [ReactiveFormsModule, CommonModule, SubmitButtonComponent,
-    NzFlexDirective, NzInputOtpComponent
+    NzFlexDirective, NzInputOtpComponent, RouterLink
   ],
   templateUrl: './reset-password.component.html',
   styleUrl: './reset-password.component.css'
@@ -57,7 +57,7 @@ export class ResetPasswordComponent {
       formURlData.set('otp', this.Form.value.otp)
       formURlData.set('newPassword', this.Form.value.password)
       this.service
-        .post('user/reset-password1', formURlData.toString())
+        .post('user/reset-password', formURlData.toString())
         .subscribe({
           next: (resp: any) => {
             if (resp.success == true) {

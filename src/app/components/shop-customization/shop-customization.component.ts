@@ -34,12 +34,12 @@ export class ShopCustomizationComponent {
       businessName: [' ', [Validators.required]],
       businessEIN: [' ', [Validators.required]],
       businessDescription: [' '],
-      bankHolderName: [' ', [Validators.required]],
-      bankName: [' ', [Validators.required]],
-      accountNumber: [' ', [Validators.required]],
-      routingNumber: [' ', [Validators.required]],
-      swiftCode: [' ', [Validators.required]],
-      iban: [' ', [Validators.required]]
+      //bankHolderName: [' ', [Validators.required]],
+      //bankName: [' ', [Validators.required]],
+      //accountNumber: [' ', [Validators.required]],
+      //routingNumber: [' ', [Validators.required]],
+      //swiftCode: [' ', [Validators.required]],
+      //iban: [' ', [Validators.required]]
     });
 
   }
@@ -63,12 +63,12 @@ export class ShopCustomizationComponent {
             businessName: resp.data.business_name,
             businessEIN: resp.data.business_ein,
             businessDescription: resp.data.business_description,
-            bankHolderName: resp.data.holder_name,
-            bankName: resp.data.bank_name,
-            accountNumber: resp.data.account_number,
-            routingNumber: resp.data.routing_number,
-            swiftCode: resp.data.swift_code,
-            iban: resp.data.iban
+            // bankHolderName: resp.data.holder_name,
+            // bankName: resp.data.bank_name,
+            // accountNumber: resp.data.account_number,
+            // routingNumber: resp.data.routing_number,
+            // swiftCode: resp.data.swift_code,
+            // iban: resp.data.iban
           });
           this.businessLogoUrl = resp.data.business_logo;
         } else {
@@ -126,12 +126,12 @@ export class ShopCustomizationComponent {
     formData.append('business_city', this.Form.value.city);
     formData.append('business_pincode', this.Form.value.pinCode);
     formData.append('business_description', this.Form.value.businessDescription);
-    formData.append('holder_name', this.Form.value.bankHolderName);
-    formData.append('bank_name', this.Form.value.bankName);
-    formData.append('account_number', this.Form.value.accountNumber);
-    formData.append('routing_number', this.Form.value.routingNumber);
-    formData.append('swift_code', this.Form.value.swiftCode);
-    formData.append('iban', this.Form.value.iban);
+    // formData.append('holder_name', this.Form.value.bankHolderName);
+    // formData.append('bank_name', this.Form.value.bankName);
+    // formData.append('account_number', this.Form.value.accountNumber);
+    // formData.append('routing_number', this.Form.value.routingNumber);
+    // formData.append('swift_code', this.Form.value.swiftCode);
+    // formData.append('iban', this.Form.value.iban);
     formData.append('phone_number', this.Form.value.phone);
 
     // Append image file if selected

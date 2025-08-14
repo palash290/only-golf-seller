@@ -1,3 +1,7 @@
 .ct_color{
     color: black !important;
 }
+
+.ct_text_red {
+    color: rgb(244 46 46);
+}
